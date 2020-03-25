@@ -1,0 +1,42 @@
+BonusTriggerAgentService:
+    Db:
+        LogsConnString:
+            settings-key: BonusTriggerAgentService-LogsConnString
+            types:
+                - AzureTableStorage
+    RabbitMq:
+        RabbitMqConnectionString:
+            settings-key: BonusManagementRabbitMQ
+            types:
+                - RabbitMq
+        PartnersIntegrationConnectionString:
+            settings-key: PartnersIntegrationRabbitMQ
+            types:
+                - RabbitMq
+        ReferralConnectionString:
+            settings-key: ReferralRabbitMQ
+            types:
+                - RabbitMq
+    BaseCurrencyCode:
+        settings-key: Constant-BaseCurrencyCode
+    IsRealEstateFeatureDisabled:
+        settings-key: IsRealEstateFeatureDisabled
+        types:
+            - Optional
+SlackNotifications:
+    AzureQueue:
+        ConnectionString:
+            settings-key: SlackNotificationsConnString
+            types:
+                - AzureTableStorage
+        QueueName:
+            settings-key: SlackQueueName
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl
+CurrencyConvertorServiceClient:
+    ServiceUrl:
+        settings-key: CurrencyConvertorServiceUrl
+CustomerProfileServiceClient:
+    ServiceUrl:
+        settings-key: CustomerProfileServiceUrl
