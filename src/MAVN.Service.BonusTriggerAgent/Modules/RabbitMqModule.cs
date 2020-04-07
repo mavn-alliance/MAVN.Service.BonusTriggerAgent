@@ -1,4 +1,4 @@
-using Autofac;
+﻿using Autofac;
 using JetBrains.Annotations;
 using Lykke.Common;
 using Lykke.RabbitMqBroker.Publisher;
@@ -101,11 +101,11 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
                 .WithParameter("exchangeName", ReferralRealEstatePurchasePaymentExchangeName)
                 .WithParameter("assetName", _baseCurrencyCode);
 
-            builder.RegisterType<PropertyPurchaseFirstRewardSubscriber>()
-                .As<IStartStop>()
-                .SingleInstance()
-                .WithParameter("connectionString", _settings.RabbitMqConnectionString)
-                .WithParameter("exchangeName", PropertyFirstPurchaseExchangeName);
+            //builder.RegisterType<PropertyPurchaseFirstRewardSubscriber>()
+            //    .As<IStartStop>()
+            //    .SingleInstance()
+            //    .WithParameter("connectionString", _settings.RabbitMqConnectionString)
+            //    .WithParameter("exchangeName", PropertyFirstPurchaseExchangeName);
 
             builder.RegisterType<OfferToPurchaseByLeadSubscriber>()
                 .As<IStartStop>()
