@@ -23,6 +23,10 @@ BonusTriggerAgentService:
         settings-key: IsRealEstateFeatureDisabled
         types:
             - Optional
+    IsPhoneVerificationDisabled:
+        settings-key: IsPhoneVerificationDisabled
+        types:
+            - Optional
 SlackNotifications:
     AzureQueue:
         ConnectionString:
