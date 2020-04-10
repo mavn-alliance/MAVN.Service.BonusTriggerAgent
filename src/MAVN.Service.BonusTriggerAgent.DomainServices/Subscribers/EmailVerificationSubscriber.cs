@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lykke.Common.Log;
@@ -16,19 +16,22 @@ namespace MAVN.Service.BonusTriggerAgent.DomainServices.Subscribers
     {
         private readonly IRabbitPublisher<BonusTriggerEvent> _bonusTriggerEventPublisher;
         private readonly ICustomerProfileClient _customerProfileClient;
+        private readonly bool _isPhoneVerificationDisabled;
 
         public EmailVerificationSubscriber(
             string connectionString, 
             string exchangeName, 
             ILogFactory logFactory, 
             IRabbitPublisher<BonusTriggerEvent> bonusTriggerEventPublisher,
-            ICustomerProfileClient customerProfileClient)
+            ICustomerProfileClient customerProfileClient,
+            bool isPhoneVerificationDisabled)
             : base(connectionString, exchangeName, logFactory)
         {
             _bonusTriggerEventPublisher = bonusTriggerEventPublisher ??
                                           throw new ArgumentNullException(nameof(bonusTriggerEventPublisher));
             
             _customerProfileClient = customerProfileClient;
+            _isPhoneVerificationDisabled = isPhoneVerificationDisabled;
 
             GuidsFieldsToValidate.Add(nameof(EmailVerifiedEvent.CustomerId));
         }
@@ -41,7 +44,7 @@ namespace MAVN.Service.BonusTriggerAgent.DomainServices.Subscribers
 
                 if (customer.ErrorCode == CustomerProfileErrorCodes.None)
                 {
-                    if (customer.Profile?.IsPhoneVerified ?? false)
+                    if (_isPhoneVerificationDisabled || (customer.Profile?.IsPhoneVerified ?? false))
                     {
                         await _bonusTriggerEventPublisher.PublishAsync(new BonusTriggerEvent
                         {

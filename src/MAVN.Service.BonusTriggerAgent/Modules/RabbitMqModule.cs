@@ -28,6 +28,7 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
         private readonly RabbitMqSettings _settings;
         private readonly string _baseCurrencyCode;
         private readonly bool _isRealEstateFeatureDisabled;
+        private readonly bool _isPhoneVerificationDisabled;
 
         public RabbitMqModule(IReloadingManager<AppSettings> settingsManager)
         {
@@ -36,6 +37,7 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
             _baseCurrencyCode = appSettings.BonusTriggerAgentService.BaseCurrencyCode;
             _isRealEstateFeatureDisabled = appSettings.BonusTriggerAgentService.IsRealEstateFeatureDisabled
                 ?? false;
+            _isPhoneVerificationDisabled = appSettings.BonusTriggerAgentService.IsPhoneVerificationDisabled;
         }
 
         protected override void Load(ContainerBuilder builder)
@@ -65,6 +67,7 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
             builder.RegisterType<EmailVerificationSubscriber>()
                 .As<IStartStop>()
                 .SingleInstance()
+                .WithParameter("isPhoneVerificationDisabled", _isPhoneVerificationDisabled)
                 .WithParameter("connectionString", _settings.RabbitMqConnectionString)
                 .WithParameter("exchangeName", EmailVerifiedExchangeName);
 

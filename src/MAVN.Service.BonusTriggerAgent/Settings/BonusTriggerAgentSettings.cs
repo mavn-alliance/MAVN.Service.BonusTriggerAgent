@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Lykke.SettingsReader.Attributes;
 
 namespace MAVN.Service.BonusTriggerAgent.Settings
@@ -14,5 +14,8 @@ namespace MAVN.Service.BonusTriggerAgent.Settings
 
         [Optional]
         public bool? IsRealEstateFeatureDisabled { get; set; }
+
+        [Optional]
+        public bool IsPhoneVerificationDisabled { get; set; }
     }
 }
