@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lykke.Common.Log;
 using Lykke.RabbitMqBroker.Publisher;
 using MAVN.Service.BonusTriggerAgent.Contract.Events;
 using MAVN.Service.BonusTriggerAgent.Domain;
-using Lykke.Service.Referral.Contract.Events;
+using MAVN.Service.Referral.Contract.Events;
 
 namespace MAVN.Service.BonusTriggerAgent.DomainServices.Subscribers
 {

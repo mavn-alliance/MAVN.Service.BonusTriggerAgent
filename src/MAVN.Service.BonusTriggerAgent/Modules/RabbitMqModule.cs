@@ -12,11 +12,6 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
     [UsedImplicitly]
     public class RabbitMqModule : Module
     {
-        private const string PropertyFirstPurchaseExchangeName = "lykke.mavn.propertyintegration.propertypurchasefirstreward";
-        private const string ReferralRealEstatePurchasePaymentExchangeName = "lykke.bonus.realestatepurchasepayment";
-        private const string PropertyLeadApprovedReferralExchangeName = "lykke.bonus.propertyleadapprovedreferral";
-        private const string OfferToPurchaseByLeadExchangeName = "lykke.bonus.purchasereferral.offertopurchasebylead";
-
         private const string BonusTriggerExchangeName = "lykke.bonus.trigger";
         private const string BonusTypesExchangeName = "lykke.bonus.types";
         private const string CustomerPhoneVerifiedExchangeName = "lykke.customer.phoneverified";
@@ -83,38 +78,6 @@ namespace MAVN.Service.BonusTriggerAgent.Modules
                 .SingleInstance()
                 .WithParameter("connectionString", _settings.ReferralConnectionString)
                 .WithParameter("exchangeName", HotelCheckoutReferralExchangeName)
-                .WithParameter("assetName", _baseCurrencyCode);
-
-            if (!_isRealEstateFeatureDisabled)
-                RegisterSubscribersForRealEstateFeature(builder);
-        }
-
-        private void RegisterSubscribersForRealEstateFeature(ContainerBuilder builder)
-        {
-            builder.RegisterType<PropertyLeadApprovedReferralSubscriber>()
-                .As<IStartStop>()
-                .SingleInstance()
-                .WithParameter("connectionString", _settings.RabbitMqConnectionString)
-                .WithParameter("exchangeName", PropertyLeadApprovedReferralExchangeName);
-
-            builder.RegisterType<ReferralRealEstatePurchasePaymentSubscriber>()
-                .As<IStartStop>()
-                .SingleInstance()
-                .WithParameter("connectionString", _settings.RabbitMqConnectionString)
-                .WithParameter("exchangeName", ReferralRealEstatePurchasePaymentExchangeName)
-                .WithParameter("assetName", _baseCurrencyCode);
-
-            //builder.RegisterType<PropertyPurchaseFirstRewardSubscriber>()
-            //    .As<IStartStop>()
-            //    .SingleInstance()
-            //    .WithParameter("connectionString", _settings.RabbitMqConnectionString)
-            //    .WithParameter("exchangeName", PropertyFirstPurchaseExchangeName);
-
-            builder.RegisterType<OfferToPurchaseByLeadSubscriber>()
-                .As<IStartStop>()
-                .SingleInstance()
-                .WithParameter("connectionString", _settings.RabbitMqConnectionString)
-                .WithParameter("exchangeName", OfferToPurchaseByLeadExchangeName)
                 .WithParameter("assetName", _baseCurrencyCode);
         }
     }

@@ -1,11 +1,11 @@
-using Autofac;
+﻿using Autofac;
 using JetBrains.Annotations;
 using Lykke.Sdk;
 using MAVN.Service.BonusTriggerAgent.DomainServices;
 using MAVN.Service.BonusTriggerAgent.Managers;
 using MAVN.Service.BonusTriggerAgent.Settings;
-using Lykke.Service.CurrencyConvertor.Client;
-using Lykke.Service.CustomerProfile.Client;
+using MAVN.Service.CurrencyConvertor.Client;
+using MAVN.Service.CustomerProfile.Client;
 using Lykke.SettingsReader;
 
 namespace MAVN.Service.BonusTriggerAgent.Modules
