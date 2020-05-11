@@ -1,4 +1,4 @@
-using Lykke.Service.PartnerManagement.Client.Models;
+﻿using MAVN.Service.PartnerManagement.Client.Models;
 
 namespace MAVN.Service.BonusTriggerAgent.Domain
 {

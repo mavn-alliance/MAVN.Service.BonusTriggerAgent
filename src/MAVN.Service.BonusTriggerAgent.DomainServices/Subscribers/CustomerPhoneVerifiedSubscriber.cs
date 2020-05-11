@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lykke.Common.Log;
 using Lykke.RabbitMqBroker.Publisher;
 using MAVN.Service.BonusTriggerAgent.Contract.Events;
 using MAVN.Service.BonusTriggerAgent.Domain;
-using Lykke.Service.CustomerProfile.Client;
-using Lykke.Service.CustomerProfile.Client.Models.Enums;
-using Lykke.Service.CustomerProfile.Contract;
+using MAVN.Service.CustomerProfile.Client;
+using MAVN.Service.CustomerProfile.Client.Models.Enums;
+using MAVN.Service.CustomerProfile.Contract;
 
 namespace MAVN.Service.BonusTriggerAgent.DomainServices.Subscribers
 {

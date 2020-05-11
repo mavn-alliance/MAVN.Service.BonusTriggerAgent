@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Common.Log;
@@ -6,9 +6,9 @@ using Lykke.Common.Log;
 using Lykke.RabbitMqBroker.Publisher;
 using MAVN.Service.BonusTriggerAgent.Contract.Events;
 using MAVN.Service.BonusTriggerAgent.Domain;
-using Lykke.Service.CurrencyConvertor.Client;
-using Lykke.Service.CurrencyConvertor.Client.Models.Enums;
-using Lykke.Service.PartnersIntegration.Contract;
+using MAVN.Service.CurrencyConvertor.Client;
+using MAVN.Service.CurrencyConvertor.Client.Models.Enums;
+using MAVN.Service.PartnersIntegration.Contract;
 
 namespace MAVN.Service.BonusTriggerAgent.DomainServices.Subscribers
 {
